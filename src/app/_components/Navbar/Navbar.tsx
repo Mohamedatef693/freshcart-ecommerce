@@ -173,7 +173,7 @@ export default function Navbar() {
         <div className="mx-auto flex h-16 max-w-[1536px] items-center justify-between gap-8 px-4 md:h-[72px]">
           <Link href="/" className="shrink-0">
             <Image
-              src="/freshcart-logo.49f1b44d.svg"
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH}/freshcart-logo.49f1b44d.svg`}
               alt="FreshCart"
               width={165}
               height={32}
@@ -183,7 +183,7 @@ export default function Navbar() {
           </Link>
 
           <form
-            action="/shop"
+            action={`${process.env.NEXT_PUBLIC_BASE_PATH}/shop`}
             method="get"
             className="relative hidden max-w-2xl flex-1 md:block"
           >
@@ -282,7 +282,7 @@ export default function Navbar() {
                   <div className="flex h-[69px] shrink-0 items-center justify-between bg-[#F9FAFB]/50 px-4">
                     <Link href="/" onClick={() => setisOpen(false)}>
                       <Image
-                        src="/freshcart-logo.49f1b44d.svg"
+                        src={`${process.env.NEXT_PUBLIC_BASE_PATH}/freshcart-logo.49f1b44d.svg`}
                         alt="FreshCart"
                         width={165}
                         height={32}
