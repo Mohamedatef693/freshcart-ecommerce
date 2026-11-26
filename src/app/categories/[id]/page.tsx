@@ -1,6 +1,15 @@
 import Link from "next/link";
-import { getCatsProduct, getSingleCategory } from "@/API/services/routemisr.services";
+import {
+  getAllCategory,
+  getCatsProduct,
+  getSingleCategory,
+} from "@/API/services/routemisr.services";
 import ProductCard from "@/app/_components/ProductCard/ProductCard";
+
+export async function generateStaticParams() {
+  const categories = await getAllCategory();
+  return categories.map((category) => ({ id: category._id }));
+}
 
 export default async function CategoryDetailsPage({
   params,

@@ -1,4 +1,8 @@
-import { getCatsProduct, getSingleProduct } from "@/API/services/routemisr.services";
+import {
+  getAllProduct,
+  getCatsProduct,
+  getSingleProduct,
+} from "@/API/services/routemisr.services";
 import { ProductType } from "@/API/types/product.type";
 import ratingStars from "@/app/_components/Rating/Ratings";
 import YouMayalsoLike from "@/app/_components/YouMayalsoLike/YouMayalsoLike";
@@ -12,6 +16,11 @@ import {
 } from "@/components/ui/carousel";
 
 import { Truck, RotateCcw, ShieldCheck } from "lucide-react";
+
+export async function generateStaticParams() {
+  const products = await getAllProduct();
+  return products.map((product) => ({ id: product._id }));
+}
 
 export default async function ProductDetails(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;

@@ -1,6 +1,15 @@
 import Link from "next/link";
-import { getAllProduct, getSingleBrand } from "@/API/services/routemisr.services";
+import {
+  getAllBrands,
+  getAllProduct,
+  getSingleBrand,
+} from "@/API/services/routemisr.services";
 import ProductCard from "@/app/_components/ProductCard/ProductCard";
+
+export async function generateStaticParams() {
+  const brands = await getAllBrands();
+  return brands.map((brand) => ({ id: brand._id }));
+}
 
 export default async function BrandDetailsPage({
   params,
